@@ -1,3 +1,8 @@
+variables:
+  GITLAB_CICD_IMAGE_REPO: registry.gitlab.com/getindata/dataops/ci-docker
+  GITLAB_CICD_IMAGE_TAG: gcloudsdk-3e70bfd714b3faf3cf498591f107b68620bfb897
+  BLOB_CONFIG_PATH: blob_args.json
+
 dev:
   image: $GITLAB_CICD_IMAGE_REPO:$GITLAB_CICD_IMAGE_TAG
   stage: execute-dev

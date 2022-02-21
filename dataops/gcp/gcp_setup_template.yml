@@ -1,3 +1,7 @@
+variables:
+  DOCKER_REGISTRY: europe-central2-docker.pkg.dev
+  BLOB_CONFIG_PATH: blob_args.json
+
 .setup:
   before_script:
     - gcloud --quiet components update
