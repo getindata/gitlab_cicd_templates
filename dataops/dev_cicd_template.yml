@@ -1,0 +1,8 @@
+dev:
+  image: $GITLAB_CICD_IMAGE_REPO:$GITLAB_CICD_IMAGE_TAG
+  stage: execute-dev
+  extends: .setup
+  script:
+    - dp compile --docker-build
+    - dp deploy --blob-args $BLOB_CONFIG_PATH --datahub-ingest --docker-push
+    - dp publish --key-path $GIT_KEY_PATH
