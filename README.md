@@ -3,7 +3,7 @@
 The project contains templates for CICD processes implemented in gitlab
 
 
-## Usage
+## Usag
 
 In `.gitlab-ci.yml` file use following include statement:
 
