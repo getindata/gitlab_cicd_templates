@@ -6,7 +6,6 @@ variables:
   before_script:
     - gcloud --quiet components update
     - gcloud auth configure-docker $DOCKER_REGISTRY
-    - echo ${GCP_KEY_PATH}
     - gcloud auth activate-service-account --key-file ${GCP_KEY_PATH}
     - docker login -u _json_key -p "$(cat ${GCP_KEY_PATH})" "https://$DOCKER_REGISTRY"
     - chmod 600 $GIT_KEY_PATH
