@@ -6,8 +6,6 @@ variables:
   BLOB_CONFIG_PATH: blob_args.json
 
 .gcp_setup: &gcp_setup
-  - echo ${GCP_KEY_PATH}
-  - cat ${GCP_KEY_PATH}
   - gcloud --quiet components update
   - gcloud auth activate-service-account --key-file ${GCP_KEY_PATH}
   - echo "{\"token\":\"$GCP_KEY_PATH\"}" > $BLOB_CONFIG_PATH
