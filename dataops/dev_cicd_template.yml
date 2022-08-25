@@ -15,6 +15,7 @@ dev:
     - dp deploy --blob-args $BLOB_CONFIG_PATH --datahub-ingest --docker-push
   rules:
     - if: '$CI_COMMIT_BRANCH != "master"'
+    - if: '$CI_COMMIT_TAG == null'
 
 release-dev:
   image: $GITLAB_CICD_IMAGE_REPO:$GITLAB_CICD_IMAGE_TAG
@@ -23,6 +24,7 @@ release-dev:
   extends:
     - .dev_setup
   script:
+    - dp compile --help
     - dp compile --docker-build --env dev --docker-tag $CI_COMMIT_TAG
     - dp deploy --blob-args $BLOB_CONFIG_PATH --datahub-ingest --docker-push
   rules:
