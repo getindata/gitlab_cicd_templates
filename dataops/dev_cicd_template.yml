@@ -16,7 +16,6 @@ dev:
   rules:
     - if: '$CI_COMMIT_BRANCH != "master"'
     - if: '$CI_COMMIT_BRANCH != "main"'
-    - if: '$CI_COMMIT_TAG !~ /^v\d+\.\d+\.\d+/' #not release
 
 release-dev:
   image: $GITLAB_CICD_IMAGE_REPO:$GITLAB_CICD_IMAGE_TAG
