@@ -40,7 +40,7 @@ release-prod:
   extends:
     - .prod_setup
   script:
-    - dp compile --env prod --docker-tag CI_COMMIT_TAG
+    - dp compile --env prod --docker-tag $CI_COMMIT_TAG
     - dp deploy --env prod --blob-args $BLOB_CONFIG_PATH --datahub-ingest
     - dp publish --key-path $GIT_KEY_PATH
   rules:
