@@ -12,7 +12,7 @@ dev:
     - .dev_setup
   script:
     - dp compile --docker-build --env dev
-    - dp deploy --blob-args $BLOB_CONFIG_PATH --datahub-ingest --docker-push
+    - dp deploy --blob-args $BLOB_CONFIG_PATH --datahub-ingest --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused}
   rules:
     - if: '$CI_COMMIT_BRANCH != "master"'
     - if: '$CI_COMMIT_BRANCH != "main"'
@@ -26,7 +26,7 @@ release-dev:
   script:
     - dp compile --help
     - dp compile --docker-build --env dev --docker-tag $CI_COMMIT_TAG
-    - dp deploy --blob-args $BLOB_CONFIG_PATH --datahub-ingest --docker-push
+    - dp deploy --blob-args $BLOB_CONFIG_PATH --datahub-ingest --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused}
   rules:
     - if: '$CI_COMMIT_TAG'
     - if: '$CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+/' #expects 'vX.Y.Z'
@@ -41,7 +41,7 @@ release-prod:
     - .prod_setup
   script:
     - dp compile --env prod --docker-tag $CI_COMMIT_TAG
-    - dp deploy --env prod --blob-args $BLOB_CONFIG_PATH --datahub-ingest
+    - dp deploy --env prod --blob-args $BLOB_CONFIG_PATH --datahub-ingest --bi-git-key-path ${LOOKER_REPO_KEY:-unused}
     - dp publish --key-path $GIT_KEY_PATH
   rules:
     - if: '$CI_COMMIT_TAG'
