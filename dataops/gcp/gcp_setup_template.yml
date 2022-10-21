@@ -8,14 +8,13 @@ variables:
 .gcp_setup: &gcp_setup
   - gcloud --quiet components update
   - gcloud auth activate-service-account --key-file ${GCP_KEY_PATH}
-  - "[[ -n \"$LOOKER_REPO_KEY\" ]] && chmod 600 $LOOKER_REPO_KEY"
 
 .docker_setup: &docker_setup
   - gcloud auth configure-docker $DOCKER_REGISTRY
 
 .git_setup: &git_setup
   - chmod 600 $GIT_KEY_PATH
-  - [[ -n $LOOKER_REPO_KEY ]] && chmod 600 $LOOKER_REPO_KEY
+  - "[[ -n \"$LOOKER_REPO_KEY\" ]] && chmod 600 $LOOKER_REPO_KEY"
 
 .dev_setup:
   before_script:
