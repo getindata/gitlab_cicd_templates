@@ -1,7 +1,6 @@
 variables:
   GCP_KEY_PATH: TBS
   GCP_DOCKER_KEY_PATH: TBS
-  GIT_KEY_PATH: TBD
   DOCKER_REGISTRY: europe-central2-docker.pkg.dev
   BLOB_CONFIG_PATH: blob_args.json
 
