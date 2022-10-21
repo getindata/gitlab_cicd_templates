@@ -14,13 +14,14 @@ variables:
   - gcloud auth configure-docker $DOCKER_REGISTRY
 
 .git_setup: &git_setup
-  - chmod 600 $GIT_KEY_PATH
+  - "[[ -n \"$LOOKER_REPO_KEY\" ]] && chmod 600 $GIT_KEY_PATH"
   - "[[ -n \"$LOOKER_REPO_KEY\" ]] && chmod 600 $LOOKER_REPO_KEY"
 
 .dev_setup:
   before_script:
     - *gcp_setup
     - *docker_setup
+    - *git_setup
 
 .prod_setup:
   before_script:
