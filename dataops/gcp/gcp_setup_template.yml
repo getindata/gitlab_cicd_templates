@@ -8,7 +8,7 @@ variables:
 .gcp_setup: &gcp_setup
   - gcloud --quiet components update
   - gcloud auth activate-service-account --key-file ${GCP_KEY_PATH}
-  - echo "{\"token\":\"$GCP_KEY_PATH\"}" > $BLOB_CONFIG_PATH
+  - "[[ -n \"$LOOKER_REPO_KEY\" ]] && chmod 600 $LOOKER_REPO_KEY"
 
 .docker_setup: &docker_setup
   - gcloud auth configure-docker $DOCKER_REGISTRY
