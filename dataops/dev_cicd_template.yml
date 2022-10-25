@@ -1,6 +1,6 @@
 variables:
   GITLAB_CICD_IMAGE_REPO: gcr.io/getindata-images-public/cicd-dataops
-  GITLAB_CICD_IMAGE_TAG: gcp-f8045f6c0571a473efa19b836a48ecebf1581d64
+  GITLAB_CICD_IMAGE_TAG: gcp-eeab3081e90136b652e9131de99cd62ec15bace2
   BLOB_CONFIG_PATH: blob_args.json
   GIT_KEY_PATH: TBS
 
@@ -12,7 +12,7 @@ dev:
     - .dev_setup
   script:
     - dp compile --docker-build --env dev
-    - dp deploy --blob-args $BLOB_CONFIG_PATH --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused} --env dev --gcp-sa-key-path $GCP_KEY_PATH
+    - dp deploy --blob-args $BLOB_CONFIG_PATH --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused} --env dev --gcp-sa-key-path $GCP_KEY_PATH --airbyte-iap-client-id $AIRBYTE_IAP_CLIENT_ID
   rules:
     - if: '$CI_COMMIT_BRANCH != "master"'
     - if: '$CI_COMMIT_BRANCH != "main"'
