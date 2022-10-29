@@ -12,7 +12,7 @@ dev:
     - .dev_setup
   script:
     - dp compile --docker-build --env dev
-    - dp deploy --blob-args $BLOB_CONFIG_PATH --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused} --env dev --gcp-sa-key-path $GCP_KEY_PATH --airbyte-iap-client-id $AIRBYTE_IAP_CLIENT_ID
+    - dp deploy --blob-args $BLOB_CONFIG_PATH --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused} --env dev --auth-token $GCP_OIDC_TOKEN
   rules:
     - if: '$CI_COMMIT_BRANCH != "master"'
     - if: '$CI_COMMIT_BRANCH != "main"'
