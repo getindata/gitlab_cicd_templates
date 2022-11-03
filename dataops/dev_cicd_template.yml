@@ -1,6 +1,6 @@
 variables:
   GITLAB_CICD_IMAGE_REPO: gcr.io/getindata-images-public/cicd-dataops
-  GITLAB_CICD_IMAGE_TAG: gcp-61fa112ea66d9d963672dec0187d81972933854a
+  GITLAB_CICD_IMAGE_TAG: gcp-4df1d68b0b9d916706d3e5ced7150ed67ab4ff12-oidc-test
   BLOB_CONFIG_PATH: blob_args.json
   GIT_KEY_PATH: TBS
 
@@ -12,7 +12,7 @@ dev:
     - .dev_setup
   script:
     - dp compile --docker-build --env dev
-    - dp deploy --blob-args $BLOB_CONFIG_PATH --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused} --env dev --auth-token $GCP_OIDC_TOKEN
+    - dp deploy --env dev --blob-args $BLOB_CONFIG_PATH --datahub-ingest --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused} --auth-token $GCP_OIDC_TOKEN
   rules:
     - if: '$CI_COMMIT_BRANCH != "master"'
     - if: '$CI_COMMIT_BRANCH != "main"'
