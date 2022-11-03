@@ -1,6 +1,6 @@
 variables:
   GITLAB_CICD_IMAGE_REPO: gcr.io/getindata-images-public/cicd-dataops
-  GITLAB_CICD_IMAGE_TAG: gcp-a4cba7fcfda9ae147591ceb9e9071f2f3968093f-oidc-test
+  GITLAB_CICD_IMAGE_TAG: gcp-oidc-test-5fcd37b9de470eb7a500ce92fcaf29cf56129ea4
   BLOB_CONFIG_PATH: blob_args.json
   GIT_KEY_PATH: TBS
 
