@@ -8,6 +8,7 @@ variables:
   - gcloud --quiet components update
   - gcloud auth activate-service-account --key-file ${GCP_KEY_PATH}
   - echo "{\"token\":\"$GCP_KEY_PATH\"}" > $BLOB_CONFIG_PATH
+  - GCP_OIDC_TOKEN=$(gcloud auth print-identity-token --audiences="$GCP_AUTH_AUDIENCES")
 
 .docker_setup: &docker_setup
   - gcloud auth configure-docker $DOCKER_REGISTRY
