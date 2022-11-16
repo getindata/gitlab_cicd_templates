@@ -12,7 +12,7 @@ dev:
     - .dev_setup
   script:
     - dp compile --docker-build --env dev
-    - dp deploy --env dev --blob-args $BLOB_CONFIG_PATH --datahub-ingest --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused} --auth-token $GCP_OIDC_TOKEN
+    - dp deploy --env dev --dags-path "$DAGS_PATH" --blob-args $BLOB_CONFIG_PATH --datahub-ingest --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused} --auth-token $GCP_OIDC_TOKEN
   rules:
     - if: '$CI_COMMIT_BRANCH != "master"'
     - if: '$CI_COMMIT_BRANCH != "main"'
