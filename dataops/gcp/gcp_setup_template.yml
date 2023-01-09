@@ -1,6 +1,8 @@
 variables:
   GCP_KEY_PATH: TBS
   GCP_DOCKER_KEY_PATH: TBS
+  GCP_AUTH_AUDIENCES: TBD
+  GCP_OIDC_TOKEN: TBS
   DOCKER_REGISTRY: europe-central2-docker.pkg.dev
   BLOB_CONFIG_PATH: blob_args.json
 
