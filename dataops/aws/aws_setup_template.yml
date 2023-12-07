@@ -1,7 +1,7 @@
 variables:
   AWS_ACCESS_KEY_ID: TBS
   AWS_SECRET_ACCESS_KEY: TBS
-  DOCKER_REGISTRY: 747492200301.dkr.ecr.eu-central-1.amazonaws.com
+  DOCKER_REGISTRY: TBS
   AWS_REGION: eu-central-1
 
 .gcp_setup: &gcp_setup
