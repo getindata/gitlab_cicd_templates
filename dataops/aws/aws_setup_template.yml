@@ -1,0 +1,23 @@
+variables:
+  AWS_ACCESS_KEY_ID: TBS
+  AWS_SECRET_ACCESS_KEY: TBS
+  DOCKER_REGISTRY: 747492200301.dkr.ecr.eu-central-1.amazonaws.com
+  AWS_REGION: eu-central-1
+
+.gcp_setup: &gcp_setup
+  - echo $ACCESS_KEY_ID:$SECRET_ACCESS_KEY > ${HOME}/.passwd-s3fs
+  - chmod 600 ${HOME}/.passwd-s3fs
+
+.docker_setup: &docker_setup
+  - encrypted_token=$(aws ecr get-login-password --region $AWS_REGION)
+  - aws ecr --region $AWS_REGION | docker login -u AWS -p $encrypted_token $DOCKER_REGISTRY
+
+.dev_setup:
+  before_script:
+    - *gcp_setup
+    - *docker_setup
+
+.prod_setup:
+  before_script:
+    - *gcp_setup
+    - *docker_setup
