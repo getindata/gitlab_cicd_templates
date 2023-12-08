@@ -1,0 +1,17 @@
+variables:
+  GITLAB_CICD_IMAGE_REPO: gcr.io/getindata-images-public/cicd-dataops
+  GITLAB_CICD_IMAGE_TAG: aws-0.5.7
+  BLOB_CONFIG_PATH: blob_args.json
+
+dev:
+  image: $GITLAB_CICD_IMAGE_REPO:$GITLAB_CICD_IMAGE_TAG
+  environment: DEVELOPMENT
+  stage: execute-dev
+  extends:
+    - .dev_setup
+  script:
+    - dp compile --docker-build --env dev
+    - dp deploy --env dev --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused} --auth-token ${GCP_OIDC_TOKEN:-unused}
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "master"'
+    - if: '$CI_COMMIT_BRANCH != "main"'
