@@ -11,7 +11,7 @@ dev:
     - .dev_setup
   script:
     - dp compile --docker-build --env dev
-    - [[ ! -z "$BLOB_CONFIG_PATH" ]] && storage_params+=(--blob-args $BLOB_CONFIG_PATH)
+    - [[ ! -z "$BLOB_CONFIG_PATH" ]] && storage_params+="(--blob-args $BLOB_CONFIG_PATH)"
     - dp deploy --env dev "${storage_params[@]}" --docker-push --bi-git-key-path ${LOOKER_REPO_KEY:-unused} --auth-token ${GCP_OIDC_TOKEN:-unused}
   rules:
     - if: '$CI_COMMIT_BRANCH != "master"'
