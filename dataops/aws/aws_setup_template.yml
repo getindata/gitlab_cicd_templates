@@ -9,8 +9,7 @@ variables:
   - chmod 600 ${HOME}/.passwd-s3fs
 
 .docker_setup: &docker_setup
-  - encrypted_token=$(aws ecr get-login-password --region $AWS_REGION)
-  - aws ecr --region $AWS_REGION | docker login -u AWS -p $encrypted_token $DOCKER_REGISTRY
+  - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $DOCKER_REGISTRY
 
 .dev_setup:
   before_script:
